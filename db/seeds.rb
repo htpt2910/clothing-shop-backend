@@ -1,9 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Main seeds file - loads all individual seed files
+require 'faker'
+
+puts "🌱 Starting database seeding..."
+
+# Load seed files in the correct order (due to dependencies)
+seed_files = [
+  'categories',
+  'products'
+]
+
+seed_files.each do |seed_file|
+  seed_path = Rails.root.join('db', 'seeds', "#{seed_file}.rb")
+  
+  if File.exist?(seed_path)
+    puts "📁 Loading #{seed_file} seeds..."
+    load seed_path
+    puts ""
+  else
+    puts "⚠️  Seed file not found: #{seed_path}"
+  end
+end
+
+puts "✅ Database seeding completed!"
+puts "🎉 Seeded #{Product.count} products under #{Category.count} categories!"
