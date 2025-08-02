@@ -45,6 +45,7 @@ jobs:
         image: mysql
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_DATABASE: app_test
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -65,5 +66,8 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          MYSQL_DATABASE: clothing_shop_test
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_USER: root
+          DATABASE_PASSWORD: ""
+          DATABASE_NAME: app_test
         run: bin/rails db:test:prepare test

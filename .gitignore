@@ -27,8 +27,8 @@
 /config/master.key
 /config/credentials/*.key
 
-# Ignore database configuration (for Docker)
-/config/database.yml
+# Database configuration is now tracked with environment variables
+# /config/database.yml
 
 # Ignore environment variables
 .env
