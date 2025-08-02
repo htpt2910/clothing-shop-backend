@@ -11,7 +11,7 @@ seed_files = [
 
 seed_files.each do |seed_file|
   seed_path = Rails.root.join('db', 'seeds', "#{seed_file}.rb")
-  
+
   if File.exist?(seed_path)
     puts "📁 Loading #{seed_file} seeds..."
     load seed_path
