@@ -47,4 +47,8 @@ group :development, :test do
 
   # Fake data generation for seeds and testing
   gem "faker"
+
+  # Testing framework
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end

@@ -16,8 +16,7 @@ categories = Category.all
 # Create 10 products using Faker
 10.times do |i|
   category = categories.sample
-  
-  # Generate clothing-appropriate names based on category
+
   product_name = case category.name
                  when "Tops"
                    ["#{Faker::Color.color_name.capitalize} #{%w[T-Shirt Sweater Hoodie Blouse Tank\ Top Cardigan].sample}",
@@ -38,8 +37,6 @@ categories = Category.all
     category: category,
     image_url: "https://picsum.photos/300/300?random=#{i}"
   )
-  
-  puts "   ✅ Created product: #{product.name} (#{product.category.name}) - ¥#{product.price}"
 end
 
 puts "📊 Created #{Product.count} products across #{Category.count} categories"
