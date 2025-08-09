@@ -72,4 +72,13 @@ Rails.application.configure do
   config.hosts << "localhost"
   config.hosts << "www.example.com"
   config.hosts << "example.com"
+  config.hosts << "clothing-shop-backend-web-1"
+
+  # Allow cross-origin requests in development
+  config.action_dispatch.default_headers = {
+    'Access-Control-Allow-Origin' => '*',
+    'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, Token',
+    'Access-Control-Max-Age' => '1728000'
+  }
 end

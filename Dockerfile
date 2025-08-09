@@ -16,7 +16,7 @@ WORKDIR /app
 RUN gem install bundler
 
 # Add Gemfile and install gems
-COPY Gemfile ./
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 # Add app source
